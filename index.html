@@ -9,77 +9,73 @@
 
 
     <style>
-        /* --- 论文列表样式--- */
-        /* 每个论文条目作为一个 Flex 容器 */
+        /* --- 论文列表样式（图片在下方） --- */
+        /* 每个论文条目的容器 */
         .pub-item {
-            display: flex;
-            align-items: flex-start; /* 顶部对齐 */
-            gap: 3rem;               /* 文字和图片之间的间距 */
-            margin-bottom: 4rem;     /* 条目之间的间距 */
+            margin-bottom: 5rem;     /* 条目之间的间距，保持宽敞 */
             padding-bottom: 2rem;
-            border-bottom: 1px solid #f0f0f0; /* 添加浅色分割线，增加层次感 */
+            border-bottom: 1px solid #f0f0f0; /* 添加浅色分割线 */
         }
 
         /* 最后一个条目去掉分割线 */
         .pub-item:last-of-type {
             border-bottom: none;
+            margin-bottom: 2rem;
         }
 
-        /* 左侧：文字信息区域 */
+        /* 文字信息区域 */
         .pub-text {
-            flex: 1; /* 占据剩余所有空间 */
+            margin-bottom: 1.5rem; /* 文字下方留白，与图片分开 */
         }
 
-        /* 右侧：图片区域 */
+        /* 图片区域 */
         .pub-image {
-            flex-shrink: 0; /* 防止图片被压缩 */
-            width: 250px;   /* 统一设定图片宽度，你可以根据需要调整 (如 220px - 300px) */
-            text-align: center;
+            width: 100%;             /* 容器撑满 */
+            text-align: center;      /* 图片居中显示 */
+            margin-bottom: 1rem;
         }
 
         /* 图片本身的样式 */
         .pub-image img {
-            width: 100%;             /* 宽度撑满父容器 (.pub-image) */
+            width: 100%;             /* 宽度撑满父容器 */
+            max-width: 500px;        /* ***关键：限制图片最大宽度***，防止在电脑大屏上太大 */
             height: auto;            /* 高度自适应 */
-            border-radius: 8px;      /* 圆角，看起来更现代 */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 淡淡的阴影，增加立体感 */
-            transition: transform 0.3s ease; /* 增加悬停动画效果 */
+            border-radius: 8px;      /* 圆角 */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 淡淡的阴影 */
+            transition: transform 0.3s ease;
         }
 
         /* 鼠标悬停在图片上时轻微放大 */
         .pub-image img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02); /* 缩小放大比例，防止太跳跃 */
         }
 
-        /* 修正之前的样式，确保在新的 Flex 布局下正常 */
+        /* 修正之前的样式 */
         .pub-title {
             font-weight: bold;
             display: block;
             color: #222;
             font-size: 1.1em;
             line-height: 1.3;
-            margin-bottom: 8px; /* 标题下方留白 */
+            margin-bottom: 8px;
         }
 
         .pub-authors {
             font-size: 0.95em;
             color: #444;
             display: block;
-            margin-bottom: 10px; /* 作者下方留白 */
+            margin-bottom: 10px;
         }
 
-        /* --- 移动端响应式适配 (非常重要) --- */
+        /* --- 移动端适配 --- */
         @media (max-width: 768px) {
             .pub-item {
-                flex-direction: column-reverse; /* 手机端：图片滑到文字下方 */
-                gap: 1.5rem;                   /* 减小间距 */
-                align-items: center;           /* 整体居中 */
-                text-align: center;             /* 文字居中 */
+                margin-bottom: 3rem;   /* 减小间距 */
+                text-align: center;    /* 手机端文字居中 */
             }
 
-            .pub-image {
-                width: 100%;      /* 图片容器撑满屏幕 */
-                max-width: 400px; /* 但限制最大宽度，防止在大屏手机上太大 */
+            .pub-image img {
+                max-width: 100%;       /* 手机端图片撑满 */
             }
 
             .links {
@@ -166,7 +162,7 @@
             </span>
             <div class="links"><a href="https://doi.org/10.1016/j.jag.2025.104643" target="_blank">Paper</a></div>
         </div>
-        <div class="pub-image"><img src="./index_files/1.png" alt="Paper diagram"></div>
+        <div class="pub-image"><img src="./index_files/carbon.png" alt="Paper diagram"></div>
     </div>
 
     <div class="pub-item">
