@@ -9,32 +9,32 @@
 
 
     <style>
-        /* --- 论文列表样式（图片在下方） --- */
+        /* --- 优化后的论文列表样式（图片在下方） --- */
         /* 每个论文条目的容器 */
         .pub-item {
             margin-bottom: 5rem;     /* 条目之间的间距，保持宽敞 */
             padding-bottom: 2rem;
             border-bottom: 1px solid #f0f0f0; /* 添加浅色分割线 */
         }
-
+        
         /* 最后一个条目去掉分割线 */
         .pub-item:last-of-type {
             border-bottom: none;
             margin-bottom: 2rem;
         }
-
+        
         /* 文字信息区域 */
         .pub-text {
             margin-bottom: 1.5rem; /* 文字下方留白，与图片分开 */
         }
-
+        
         /* 图片区域 */
         .pub-image {
             width: 100%;             /* 容器撑满 */
             text-align: center;      /* 图片居中显示 */
             margin-bottom: 1rem;
         }
-
+        
         /* 图片本身的样式 */
         .pub-image img {
             width: 100%;             /* 宽度撑满父容器 */
@@ -44,12 +44,12 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 淡淡的阴影 */
             transition: transform 0.3s ease;
         }
-
+        
         /* 鼠标悬停在图片上时轻微放大 */
         .pub-image img:hover {
             transform: scale(1.02); /* 缩小放大比例，防止太跳跃 */
         }
-
+        
         /* 修正之前的样式 */
         .pub-title {
             font-weight: bold;
@@ -59,25 +59,25 @@
             line-height: 1.3;
             margin-bottom: 8px;
         }
-
+        
         .pub-authors {
             font-size: 0.95em;
             color: #444;
             display: block;
             margin-bottom: 10px;
         }
-
+        
         /* --- 移动端适配 --- */
         @media (max-width: 768px) {
             .pub-item {
                 margin-bottom: 3rem;   /* 减小间距 */
                 text-align: center;    /* 手机端文字居中 */
             }
-
+        
             .pub-image img {
                 max-width: 100%;       /* 手机端图片撑满 */
             }
-
+        
             .links {
                 justify-content: center; /* 链接按钮居中 */
             }
