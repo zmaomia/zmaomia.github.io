@@ -152,61 +152,43 @@
         color: #4243d1; 
     }
 
-    /* 1. 全局链接默认样式：平时去掉下划线，保持干净 */
+    /* 1. 全局普通链接 (如正文中的链接、学校链接等) */
     a {
-        color: #4243d1;            /* ***关键修改：统一使用深蓝色/紫色 (参考你的 Email 颜色)*** */
-        text-decoration: none;     /* 平时去掉下划线 */
-        transition: 0.3s;          /* 增加一个平滑变色的过渡效果 */
+        color: #3366cc;            /* 经典的学术链接蓝，对比度适中 */
+        text-decoration: none;     /* 平时去掉下划线，页面更整洁 */
+        border-bottom: 1px dotted transparent; /* 为下划线留出位置，防止抖动 */
+        transition: all 0.3s ease;
     }
     
-    /* 2. 鼠标放上去时的样式：出现下划线并轻微变色 */
     a:hover {
-        text-decoration: underline; /* 鼠标移上去出现下划线 */
-        color: #d860ce;             /* ***关键修改：鼠标移上去变成你喜欢的粉紫色 (可选)*** */
+        color: #0044aa;            /* 鼠标移上去变为更深的蓝色 */
+        text-decoration: none;
+        border-bottom: 1px solid #0044aa; /* 用实线下划线代替默认样式，更精致 */
     }
     
-    /* 3. Publications 部分的 Paper/Github 按钮 */
+    /* 2. Publications 部分的 Paper/Github 按钮 */
     .links a { 
         margin-right: 12px; 
         font-size: 0.85em; 
-        font-weight: 600; 
-        
-        /* ***关键修改：按钮平时使用深灰蓝色 (#2c3e50) *** */
-        color: #2c3e50; 
-        
+        font-weight: 700;          /* 加粗字体，解决你提到的看不清的问题 */
+        color: #3366cc;            /* 初始文字颜色：深蓝色 */
         text-transform: uppercase; 
-        border: 1px solid #d860ce;   /* ***关键修改：按钮边框保持粉紫色，增加一点设计感*** */
+        border: 1.5px solid #3366cc; /* 加粗边框，与文字颜色一致 */
         padding: 3px 12px;
         border-radius: 4px;
-        text-decoration: none;
+        display: inline-flex;      /* 确保对齐 */
+        align-items: center;
         transition: all 0.2s ease;
     }
     
-    /* 4. 鼠标悬停在 Paper/Github 按钮上的样式 */
+    /* 3. 鼠标悬停在 Paper/Github 按钮上的样式 */
     .links a:hover { 
-        background-color: #d860ce;  /* ***鼠标移上去按钮变身粉紫色，醒目且增加交互感*** */
-        color: #fff;                 /* 文字变白 */
-        border-color: #d860ce;       /* 边框变色 */
-    }
-    
-    /* 6. 链接按钮容器 (左对齐) */
-    .links a { 
-    margin-right: 12px; 
-    font-size: 0.9em;   /* 稍微调大字号 */
-    font-weight: 700;   /* ***关键修改：设为最高粗度 700*** */
-    color: #d860ce; 
-    text-transform: uppercase; 
-    border: 1.5px solid #d860ce; /* ***加粗边框到 1.5px*** */
-    padding: 3px 12px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: 0.2s;
-    }
-    
-    /* 鼠标悬停效果：变色并加深背景，增加交互感 */
-    .links a:hover { 
-        background-color: #4243d1; 
-        color: #fff; 
+        background-color: #3366cc; /* 背景填满蓝色 */
+        color: #ffffff !important; /* 文字变为纯白，!important 确保覆盖全局样式 */
+        border-color: #3366cc; 
+        text-decoration: none;      /* 按钮内不要下划线 */
+        transform: translateY(-1px); /* 悬停时轻微上浮，增加点击感 */
+        box-shadow: 0 2px 5px rgba(51, 102, 204, 0.2); /* 淡淡的蓝色阴影 */
     }
 
     
