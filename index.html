@@ -9,81 +9,136 @@
 
 
     <style>
-        /* --- 优化后的论文列表样式（图片在下方） --- */
-        /* 每个论文条目的容器 */
-        .pub-item {
-            margin-bottom: 5rem;     /* 条目之间的间距，保持宽敞 */
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #f0f0f0; /* 添加浅色分割线 */
-        }
-        
-        /* 最后一个条目去掉分割线 */
-        .pub-item:last-of-type {
-            border-bottom: none;
-            margin-bottom: 2rem;
-        }
-        
-        /* 文字信息区域 */
-        .pub-text {
-            margin-bottom: 1.5rem; /* 文字下方留白，与图片分开 */
-        }
-        
-        /* 图片区域 */
-        .pub-image {
-            width: 100%;             /* 容器撑满 */
-            text-align: center;      /* 图片居中显示 */
-            margin-bottom: 1rem;
-        }
-        
-        /* 图片本身的样式 */
-        .pub-image img {
-            width: 100%;             /* 宽度撑满父容器 */
-            max-width: 500px;        /* ***关键：限制图片最大宽度***，防止在电脑大屏上太大 */
-            height: auto;            /* 高度自适应 */
-            border-radius: 8px;      /* 圆角 */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* 淡淡的阴影 */
-            transition: transform 0.3s ease;
-        }
-        
-        /* 鼠标悬停在图片上时轻微放大 */
-        .pub-image img:hover {
-            transform: scale(1.02); /* 缩小放大比例，防止太跳跃 */
-        }
-        
-        /* 修正之前的样式 */
-        .pub-title {
-            font-weight: bold;
-            display: block;
-            color: #222;
-            font-size: 1.1em;
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
-        
-        .pub-authors {
-            font-size: 0.95em;
-            color: #444;
-            display: block;
-            margin-bottom: 10px;
-        }
-        
-        /* --- 移动端适配 --- */
-        @media (max-width: 768px) {
-            .pub-item {
-                margin-bottom: 3rem;   /* 减小间距 */
-                text-align: center;    /* 手机端文字居中 */
-            }
-        
-            .pub-image img {
-                max-width: 100%;       /* 手机端图片撑满 */
-            }
-        
-            .links {
-                justify-content: center; /* 链接按钮居中 */
-            }
-        }
-    </style>
+    /* 1. 基础布局与平滑滚动 */
+    html { scroll-behavior: smooth; }
+    body { 
+        max-width: 900px; 
+        margin: 0 auto; 
+        padding: 2rem; 
+        padding-top: 80px; /* 增加顶部留白 */
+        color: #333; 
+        line-height: 1.6; 
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
+    /* 2. Header 部分：支持全平台居中 */
+    header { 
+        border-bottom: 2px solid #f4f4f9; 
+        margin-bottom: 2rem; 
+        padding-bottom: 2rem; 
+        display: flex; 
+        flex-direction: column; /* 纵向排列以实现完美居中 */
+        align-items: center; 
+        text-align: center; 
+    }
+    .profile-pic { 
+        width: 150px; 
+        height: 150px;
+        border-radius: 50%; 
+        border: 2px solid #ddd; 
+        margin-bottom: 1.5rem;
+        object-fit: cover;
+    }
+    header h1 { margin-bottom: 5px; font-weight: bold; color: #222; }
+    header p { margin: 0; line-height: 1.5; color: #555; }
+
+    /* 3. Section 板块间距与标题 */
+    section { margin-bottom: 6rem; } /* 增加板块间距，提升呼吸感 */
+    h2 { 
+        border-left: 5px solid #222; 
+        padding-left: 15px; 
+        margin-bottom: 2rem; 
+        color: #222;
+        font-size: 2.4rem;
+    }
+    h3 { 
+        margin-top: 3rem; 
+        color: #666; 
+        font-size: 1.8rem; 
+        border-bottom: 1px solid #eee; 
+        padding-bottom: 5px; 
+    }
+
+    /* 4. 通用列表条目 (用于 Education, Teaching) */
+    .item-row { 
+        display: flex; 
+        justify-content: space-between; 
+        margin-bottom: 0.5rem; 
+        flex-wrap: wrap; 
+    }
+    .date { color: #666; font-style: italic; }
+
+    /* 5. Publications 论文列表：图片在下方布局 */
+    .pub-item { 
+        display: flex;
+        flex-direction: column; /* 强制文字在上图片在下 */
+        margin-bottom: 5rem; 
+        padding-bottom: 2rem; 
+        border-bottom: 1px solid #f9f9f9; 
+    }
+    .pub-item:last-of-type { border-bottom: none; }
+    
+    .pub-text { margin-bottom: 1.5rem; }
+    .pub-title { 
+        font-weight: bold; 
+        display: block; 
+        color: #222; 
+        font-size: 1.1em; 
+        line-height: 1.4;
+    }
+    .pub-authors { font-size: 0.95em; color: #444; display: block; margin: 8px 0; }
+    .me { font-weight: bold; text-decoration: underline; color: #4243d1; }
+    .doi-text { color: #777; font-size: 0.85em; }
+
+    /* 论文图片美化 */
+    .pub-image { width: 100%; text-align: center; }
+    .pub-image img { 
+        width: 100%; 
+        max-width: 600px; /* 限制大屏下的图片宽度 */
+        height: auto; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+        transition: transform 0.3s ease;
+    }
+    .pub-image img:hover { transform: scale(1.02); }
+
+    /* 6. 超链接按钮美化 (Links & CV) */
+    .links { margin-top: 10px; display: flex; gap: 10px; }
+    .links a { 
+        font-size: 0.8em; 
+        font-weight: bold; 
+        color: #d860ce; 
+        text-transform: uppercase; 
+        border: 1px solid #d860ce;
+        padding: 2px 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    .links a:hover { background: #d860ce; color: #fff; }
+
+    /* 7. 回到顶部按钮 */
+    #back-to-top {
+        position: fixed; bottom: 40px; right: 40px; z-index: 99;
+        background-color: #222; color: white; width: 40px; height: 40px;
+        text-align: center; line-height: 38px; border-radius: 50%;
+        text-decoration: none; font-size: 20px; display: none;
+        transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    #back-to-top:hover { background-color: #4243d1; transform: translateY(-3px); }
+
+    /* 8. 页脚 */
+    footer { text-align: center; font-size: 0.8em; margin-top: 8rem; color: #999; padding-bottom: 2rem; }
+
+    /* 9. 移动端适配补丁 */
+    @media (max-width: 600px) { 
+        body { padding: 1.5rem; padding-top: 40px; }
+        section { margin-bottom: 4rem; }
+        .pub-item { text-align: center; } /* 手机端文字居中平衡视觉 */
+        .links { justify-content: center; }
+        #back-to-top { bottom: 20px; right: 20px; }
+    }
+</style>
 
 </head>
 <body>
