@@ -11,14 +11,34 @@
     <style>
     /* 1. 基础布局与平滑滚动 */
     html { scroll-behavior: smooth; }
+
     body { 
-        max-width: 900px; 
-        margin: 0 auto; 
-        padding: 2rem; 
-        padding-top: 80px; /* 增加顶部留白 */
-        color: #2c3e50; 
-        line-height: 1.6; 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 2rem; 
+    padding-top: 80px; 
+    
+    /* 颜色：使用深灰蓝色 #2c3e50，比纯黑更具高级感，减少视觉疲劳 */
+    color: #2c3e50; 
+    
+    /* 行高：增加到 1.7，让密集的论文列表更具可读性 */
+    line-height: 1.7; 
+    
+    /* 字号：直接设定为 17px 或 18px，确保在电脑端清晰易读 */
+    font-size: 17px; 
+
+    /* 字体族：
+       1. "Inter" 是目前国际学术界和科技感网页最流行的字体（如果系统没有则向下匹配）
+       2. "-apple-system" 等确保在 Mac 和 Windows 都能调用最平滑的无衬线字体 
+    */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* 抗锯齿技术：让字体在屏幕上显示得更锐利、更平滑 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* 页面背景：极淡的灰色，能让白色的图片区域更突出（可选） */
+    background-color: #ffffff; 
     }
 
     /* 2. Header 部分：支持全平台居中 */
