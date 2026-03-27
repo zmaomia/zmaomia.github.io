@@ -90,53 +90,38 @@
     .me { font-weight: bold; text-decoration: underline; color: #4243d1; }
     .doi-text { color: #777; font-size: 0.85em; }
 
-    /* 论文图片美化 */
-    .pub-image { width: 100%; text-align: center; }
-    .pub-image img { 
-        width: 100%; 
-        max-width: 600px; /* 限制大屏下的图片宽度 */
-        height: auto; 
-        border-radius: 8px; 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+        /* 1. 图片容器：改为左对齐，取消强制居中 */
+    .pub-image {
+        width: 100%;
+        text-align: left; /* 保持与文字一致的左对齐 */
+        margin-top: 1.5rem; /* 增加文字与图片之间的间隙 */
+    }
+    
+    /* 2. 图片本身：宽度设为 100%，高度自适应 */
+    .pub-image img {
+        width: 100%;          /* 核心：让图片宽度始终填满 900px 的容器 */
+        max-width: 100%;      /* 确保不会超出容器 */
+        height: auto;         /* 保持原图比例，防止拉伸变形 */
+        display: block;       /* 消除图片下方的微小缝隙 */
+        border-radius: 4px;   /* 轻微圆角，更精致 */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 淡淡的投影，增加层次 */
         transition: transform 0.3s ease;
     }
-    .pub-image img:hover { transform: scale(1.02); }
-
-    /* 6. 超链接按钮美化 (Links & CV) */
-    .links { margin-top: 10px; display: flex; gap: 10px; }
-    .links a { 
-        font-size: 0.8em; 
-        font-weight: bold; 
-        color: #d860ce; 
-        text-transform: uppercase; 
-        border: 1px solid #d860ce;
-        padding: 2px 12px;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: all 0.3s ease;
+    
+    /* 鼠标悬停微动，增加交互感 */
+    .pub-image img:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .links a:hover { background: #d860ce; color: #fff; }
-
-    /* 7. 回到顶部按钮 */
-    #back-to-top {
-        position: fixed; bottom: 40px; right: 40px; z-index: 99;
-        background-color: #222; color: white; width: 40px; height: 40px;
-        text-align: center; line-height: 38px; border-radius: 50%;
-        text-decoration: none; font-size: 20px; display: none;
-        transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-    #back-to-top:hover { background-color: #4243d1; transform: translateY(-3px); }
-
-    /* 8. 页脚 */
-    footer { text-align: center; font-size: 0.8em; margin-top: 8rem; color: #999; padding-bottom: 2rem; }
-
-    /* 9. 移动端适配补丁 */
-    @media (max-width: 600px) { 
-        body { padding: 1.5rem; padding-top: 40px; }
-        section { margin-bottom: 4rem; }
-        .pub-item { text-align: center; } /* 手机端文字居中平衡视觉 */
-        .links { justify-content: center; }
-        #back-to-top { bottom: 20px; right: 20px; }
+    
+    /* 3. 手机端适配：如果手机端希望居中，可以在 media query 里改 */
+    @media (max-width: 600px) {
+        .pub-item {
+            text-align: left; /* 建议手机端也保持左对齐，更符合阅读习惯 */
+        }
+        .pub-image img {
+            max-width: 100%; /* 手机端图片自动缩小以适应屏幕宽度 */
+        }
     }
 </style>
 
