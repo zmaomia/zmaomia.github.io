@@ -153,11 +153,23 @@
     }
     
     /* 6. 链接按钮容器 (左对齐) */
-    .links {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-start; /* 强制链接按钮靠左 */
-        margin-top: 10px;
+    .links a { 
+    margin-right: 12px; 
+    font-size: 0.9em;   /* 稍微调大字号 */
+    font-weight: 700;   /* ***关键修改：设为最高粗度 700*** */
+    color: #d860ce; 
+    text-transform: uppercase; 
+    border: 1.5px solid #d860ce; /* ***加粗边框到 1.5px*** */
+    padding: 3px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: 0.2s;
+    }
+    
+    /* 鼠标悬停效果：变色并加深背景，增加交互感 */
+    .links a:hover { 
+        background-color: #d860ce; 
+        color: #fff; 
     }
 
     
