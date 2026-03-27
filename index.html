@@ -68,60 +68,88 @@
     }
     .date { color: #666; font-style: italic; }
 
-    /* 5. Publications 论文列表：图片在下方布局 */
-    .pub-item { 
+    /* 1. 每个论文条目作为一个 Flex 容器，顶部对齐 */
+    .pub-item {
         display: flex;
-        flex-direction: column; /* 强制文字在上图片在下 */
-        margin-bottom: 5rem; 
-        padding-bottom: 2rem; 
-        border-bottom: 1px solid #f9f9f9; 
+        align-items: flex-start; /* 确保文字从图片顶部开始对齐 */
+        gap: 3rem;               /* ***关键：图片和文字之间的间距*** (根据需要调整) */
+        margin-bottom: 5rem;     /* 条目之间的间距 */
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #f9f9f9;
     }
+    
     .pub-item:last-of-type { border-bottom: none; }
     
-    .pub-text { margin-bottom: 1.5rem; }
-    .pub-title { 
-        font-weight: bold; 
-        display: block; 
-        color: #222; 
-        font-size: 1.1em; 
-        line-height: 1.4;
-    }
-    .pub-authors { font-size: 0.95em; color: #444; display: block; margin: 8px 0; }
-    .me { font-weight: bold; text-decoration: underline; color: #4243d1; }
-    .doi-text { color: #777; font-size: 0.85em; }
-
-        /* 1. 图片容器：改为左对齐，取消强制居中 */
+    /* 2. 左侧：图片区域 (固定宽度) */
     .pub-image {
-        width: 100%;
-        text-align: left; /* 保持与文字一致的左对齐 */
-        margin-top: 1.5rem; /* 增加文字与图片之间的间隙 */
+        flex-shrink: 0; /* ***关键：防止图片被压缩*** */
+        width: 250px;   /* ***关键：统一设定图片宽度*** (建议 220px - 280px) */
+        text-align: center;
+        margin-top: 5px; /* 微调，让图片顶部与文字第一行对齐 */
     }
     
-    /* 2. 图片本身：宽度设为 100%，高度自适应 */
+    /* 3. 图片本身的样式 (保持比例，精致美化) */
     .pub-image img {
-        width: 100%;          /* 核心：让图片宽度始终填满 900px 的容器 */
-        max-width: 100%;      /* 确保不会超出容器 */
-        height: auto;         /* 保持原图比例，防止拉伸变形 */
-        display: block;       /* 消除图片下方的微小缝隙 */
-        border-radius: 4px;   /* 轻微圆角，更精致 */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 淡淡的投影，增加层次 */
+        width: 100%;             /* 撑满父容器 (.pub-image) */
+        height: auto;            /* 高度自适应 */
+        border-radius: 6px;      /* 轻微圆角 */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* 淡淡的阴影 */
         transition: transform 0.3s ease;
     }
     
-    /* 鼠标悬停微动，增加交互感 */
-    .pub-image img:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    /* 鼠标悬停微动 */
+    .pub-image img:hover { transform: scale(1.03); }
+    
+    /* 4. 右侧：文字信息区域 (自动占据剩余空间) */
+    .pub-text {
+        flex: 1; /* 占据剩余的所有宽度 */
     }
     
-    /* 3. 手机端适配：如果手机端希望居中，可以在 media query 里改 */
-    @media (max-width: 600px) {
+    /* 5. 文字内部样式 (保持左对齐) */
+    .pub-title {
+        font-weight: bold;
+        display: block;
+        color: #222;
+        font-size: 1.1em;
+        line-height: 1.4;
+        text-align: left; /* 强制左对齐 */
+        margin-bottom: 8px;
+    }
+    
+    .pub-authors {
+        font-size: 0.95em;
+        color: #444;
+        display: block;
+        text-align: left; /* 强制左对齐 */
+        margin-bottom: 12px;
+    }
+    
+    /* 6. 链接按钮容器 (左对齐) */
+    .links {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start; /* 强制链接按钮靠左 */
+        margin-top: 10px;
+    }
+    
+    /* --- 移动端响应式适配 (非常重要) --- */
+    @media (max-width: 768px) {
         .pub-item {
-            text-align: left; /* 建议手机端也保持左对齐，更符合阅读习惯 */
+            flex-direction: column-reverse; /* 手机端：图片滑到文字下方 */
+            gap: 1.5rem;                   /* 减小间距 */
+            align-items: center;           /* 整体居中 */
+            text-align: center;             /* 文字居中 */
         }
-        .pub-image img {
-            max-width: 100%; /* 手机端图片自动缩小以适应屏幕宽度 */
+    
+        .pub-image {
+            width: 100%;      /* 图片容器撑满屏幕 */
+            max-width: 400px; /* 但限制最大宽度，防止太大 */
+            margin-top: 0;
         }
+    
+        /* 手机端文字和链接居中 */
+        .pub-title, .pub-authors { text-align: center; }
+        .links { justify-content: center; }
     }
 </style>
 
