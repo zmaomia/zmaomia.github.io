@@ -192,24 +192,50 @@
     }
 
     
-    /* --- 移动端响应式适配  --- */
+    /* --- 移动端响应式适配 (针对手机屏幕) --- */
     @media (max-width: 768px) {
+        /* 1. 整体容器间距微调 */
+        body { 
+            padding: 1.5rem; 
+            padding-top: 40px; 
+        }
+    
+        /* 2. 论文条目布局：保持垂直堆叠，但内部强制左对齐 */
         .pub-item {
-            flex-direction: column-reverse; /* 手机端：图片滑到文字下方 */
-            gap: 1.5rem;                   /* 减小间距 */
-            align-items: center;           /* 整体居中 */
-            text-align: center;             /* 文字居中 */
+            flex-direction: column; /* 图片在上，文字在下 */
+            align-items: flex-start; /* 容器内部件靠左 */
+            text-align: left;        /* ***关键：文字强制左对齐*** */
+            gap: 1.5rem;
+            margin-bottom: 4rem;
         }
     
+        /* 3. 图片在手机上的宽度缩放 */
         .pub-image {
-            width: 100%;      /* 图片容器撑满屏幕 */
-            max-width: 400px; /* 但限制最大宽度，防止太大 */
-            margin-top: 0;
+            width: 100%;
+            max-width: 100%; /* 让图片在手机上可以横向撑满，或者根据需要设为 300px */
+            text-align: left; /* 图片也靠左 */
         }
     
-        /* 手机端文字和链接居中 */
-        .pub-title, .pub-authors { text-align: center; }
-        .links { justify-content: center; }
+        /* 4. 文字、作者、链接全部左对齐 */
+        .pub-text {
+            width: 100%;
+            text-align: left;
+        }
+    
+        .pub-title, .pub-authors {
+            text-align: left; /* 覆盖之前的 center 设置 */
+        }
+    
+        /* 5. 链接按钮左对齐 */
+        .links {
+            justify-content: flex-start; /* ***关键：按钮不再居中，靠左排列*** */
+        }
+    
+        /* 6. Section 标题对齐 */
+        h2 {
+            font-size: 2rem;
+            text-align: left;
+        }
     }
 </style>
 
