@@ -192,15 +192,33 @@
     }
 
     footer {
-    text-align: center;    /* ***关键修改：文字居中*** */
-    font-size: 0.85em;      /* 稍微调大一点点，更清晰 */
-    margin-top: 8rem;      /* 与上方内容保持足够的呼吸感 */
-    padding: 2rem 0;       /* 增加上下内边距 */
-    color: #888;           /* 柔和的灰色 */
-    border-top: 1px solid #eee; /* 添加一条非常浅的顶部分割线，增加正式感 */
-    width: 100%;           /* 确保容器占满宽度以实现真正的对齐 */
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 8rem;
+    padding: 3rem 0;
+    color: #888;
+    border-top: 1px solid #eee;
     }
-
+    
+    /* 联系方式图标样式 */
+    .footer-contact {
+        margin-bottom: 10px;
+    }
+    
+    .footer-contact a {
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
+    
+    /* 鼠标移到图标上时轻微放大并变色 */
+    .footer-contact a:hover svg {
+        fill: #3366cc; /* 变为你设定的蓝色 */
+        transform: scale(1.2);
+    }
+    
+    footer p {
+        margin: 0;
+    }
  
     /* --- 移动端响应式适配 (针对手机屏幕) --- */
     @media (max-width: 768px) {
@@ -455,8 +473,20 @@
 </section>
 
 <footer>
-    &copy; 2026 Zhu Mao | Last updated: March 2026
+    <div class="footer-contact">
+        <a href="mailto:maozhu.mia@gmail.com" title="Email me">
+            <svg style="width:20px; vertical-align:middle; fill:#888;" viewBox="0 0 24 24">
+                <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V8L12,13L20,8V18M12,11L4,6H20L12,11Z" />
+            </svg>
+        </a>
+    </div>
+    <p>&copy; <span id="year"></span> Zhu Mao | Last updated: March 2026</p>
 </footer>
+
+<script>
+// 自动获取当前年份并填入 id 为 year 的元素中
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
