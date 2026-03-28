@@ -191,7 +191,17 @@
         box-shadow: 0 2px 5px rgba(51, 102, 204, 0.2); /* 淡淡的蓝色阴影 */
     }
 
-    
+    footer {
+    text-align: center;    /* ***关键修改：文字居中*** */
+    font-size: 0.85em;      /* 稍微调大一点点，更清晰 */
+    margin-top: 8rem;      /* 与上方内容保持足够的呼吸感 */
+    padding: 2rem 0;       /* 增加上下内边距 */
+    color: #888;           /* 柔和的灰色 */
+    border-top: 1px solid #eee; /* 添加一条非常浅的顶部分割线，增加正式感 */
+    width: 100%;           /* 确保容器占满宽度以实现真正的对齐 */
+    }
+
+ 
     /* --- 移动端响应式适配 (针对手机屏幕) --- */
     @media (max-width: 768px) {
         /* 1. 整体容器间距微调 */
