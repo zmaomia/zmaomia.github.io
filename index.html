@@ -4,208 +4,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zhu Mao | Homepage</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+
+    <!-- SEO & 分享卡片 -->
+    <meta name="description" content="Zhu Mao — Postdoctoral Researcher at University of Helsinki, working on forest precision harvesting, deep learning in forestry, photogrammetry and remote sensing, and 3D modeling.">
+    <meta name="author" content="Zhu Mao">
+    <meta property="og:title" content="Zhu Mao | Homepage">
+    <meta property="og:description" content="Postdoctoral Researcher in forest remote sensing and AI at University of Helsinki.">
+    <meta property="og:image" content="https://zmaomia.github.io/index_files/zhumao.jpg">
+    <meta property="og:url" content="https://zmaomia.github.io/">
+    <meta property="og:type" content="profile">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" type="image/jpeg" href="./index_files/zhumao.jpg">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-
     <style>
-    /* 1. 基础布局与平滑滚动 */
-    html { scroll-behavior: smooth; }
+    /* ========== 基础布局 ========== */
+    * { box-sizing: border-box; }
 
-    body { 
-    max-width: 900px; 
-    margin: 0 auto; 
-    padding: 2rem; 
-    padding-top: 80px; 
-    
-    /* 颜色：使用深灰蓝色 #2c3e50*/
-    color: #2c3e50; 
-    
-    /* 行高：增加到 1.7 */
-    line-height: 1.7; 
-    
-    /* 字号：直接设定为 17px 或 18px*/
-    font-size: 17px; 
-
-    /* 字体族：
-       1. "Inter" 
-       2. "-apple-system" 在 Mac 和 Windows
-    */
-    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-
-    /* 抗锯齿技术：让字体在屏幕上显示得更锐利、更平滑 */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    /* 页面背景：极淡的灰色，能让白色的图片区域更突出（可选） */
-    background-color: #ffffff; 
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;   /* 让锚点跳转不被导航栏遮挡 */
     }
 
-    /* 2. Header 部分：支持全平台居中 */
-    header { 
-        border-bottom: 2px solid #f4f4f9; 
-        margin-bottom: 2rem; 
-        padding-bottom: 2rem; 
-        display: flex; 
-        flex-direction: column; /* 纵向排列以实现完美居中 */
-        align-items: center; 
-        text-align: center; 
+    body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        padding-top: 100px;          /* 给固定导航栏让位 */
+        color: #2c3e50;
+        line-height: 1.7;
+        font-size: 17px;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: #ffffff;
     }
-    .profile-pic { 
-        width: 150px; 
+
+    /* ========== 导航栏 ========== */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: saturate(180%) blur(10px);
+        -webkit-backdrop-filter: saturate(180%) blur(10px);
+        border-bottom: 1px solid #eaeaea;
+        z-index: 1000;
+    }
+    .nav-container {
+        max-width: 900px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-logo {
+        font-size: 1.05em;
+        font-weight: 700;
+        color: #222;
+        text-decoration: none;
+        letter-spacing: 0.3px;
+        border-bottom: none;
+    }
+    .nav-logo:hover {
+        color: #4243d1;
+        border-bottom: none;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 1.8rem;
+        margin: 0;
+        padding: 0;
+    }
+    .nav-links a {
+        color: #555;
+        text-decoration: none;
+        font-size: 0.95em;
+        font-weight: 500;
+        padding: 6px 2px;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover {
+        color: #4243d1;
+        border-bottom: 2px solid transparent;
+    }
+    .nav-links a.active {
+        color: #4243d1;
+        border-bottom-color: #4243d1;
+    }
+    .nav-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    .nav-toggle span {
+        display: block;
+        height: 2px;
+        background: #333;
+        border-radius: 2px;
+        transition: transform 0.25s, opacity 0.25s;
+    }
+
+    /* ========== Header ========== */
+    header {
+        border-bottom: 2px solid #f4f4f9;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .profile-pic {
+        width: 150px;
         height: 150px;
-        border-radius: 50%; 
-        border: 2px solid #ddd; 
+        border-radius: 50%;
+        border: 2px solid #ddd;
         margin-bottom: 1.5rem;
         object-fit: cover;
     }
-    header h1 { margin-bottom: 5px; font-weight: bold; color: #222; }
-    header p { margin: 0; line-height: 1.5; color: #555; }
-
-    /* 3. Section 板块间距与标题 */
-    section { margin-bottom: 6rem; } /* 增加板块间距，提升呼吸感 */
-    h2 { 
-        border-left: 5px solid #4243d1; 
-        padding-left: 15px; 
-        margin-bottom: 3 rem; 
+    header h1 {
+        margin: 0 0 8px 0;
+        font-weight: bold;
         color: #222;
-        font-size: 3rem;
+    }
+    .affiliation {
+        margin: 0 0 14px 0;
+        line-height: 1.5;
+        color: #555;
+    }
+    .contact-line {
+        margin: 0 0 8px 0;
+        font-size: 1rem;
+    }
+    .social-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-size: 1rem;
+    }
+    .social-links a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .social-links .divider {
+        color: #ccc;
+    }
+    .social-links .fa-graduation-cap {
+        font-size: 16px;
+        margin-right: 6px;
+        color: #4285F4;
+    }
+    .social-links .orcid-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+        vertical-align: middle;
+    }
+
+    /* ========== Section 与标题 ========== */
+    section {
+        margin-bottom: 3.5rem;
+        scroll-margin-top: 80px;
+    }
+    h2 {
+        border-left: 5px solid #4243d1;
+        padding-left: 15px;
+        margin-bottom: 1.5rem;
+        color: #222;
+        font-size: 2rem;
         font-weight: 500;
     }
-    h3 { 
-        margin-top: 3rem; 
-        color: #666; 
-        font-size: 1.8rem; 
-        border-bottom: 1px solid #eee; 
-        padding-bottom: 5px; 
+    h3 {
+        margin-top: 2rem;
+        color: #666;
+        font-size: 1.3rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
     }
 
-    /* 4. 通用列表条目 (用于 Education, Teaching) */
-    .item-row { 
-        display: flex; 
-        justify-content: space-between; 
-        margin-bottom: 0.5rem; 
-        flex-wrap: wrap; 
+    /* ========== Education / 通用列表条目 ========== */
+    .item-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 2px;
+        flex-wrap: wrap;
     }
     .date { color: #666; font-style: italic; }
 
-    /* 1. 每个论文条目作为一个 Flex 容器，顶部对齐 */
-    .pub-item {
-        display: flex;
-        align-items: flex-start; /* 确保文字从图片顶部开始对齐 */
-        gap: 3rem;               /* ***关键：图片和文字之间的间距*** (根据需要调整) */
-        margin-bottom: 5rem;     /* 条目之间的间距 */
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #f9f9f9;
-    }
-    
-    .pub-item:last-of-type { border-bottom: none; }
-    
-    /* 2. 左侧：图片区域 (固定宽度) */
-    .pub-image {
-        flex-shrink: 0; /* ***关键：防止图片被压缩*** */
-        width: 250px;   /* ***关键：统一设定图片宽度*** (建议 220px - 280px) */
-        text-align: center;
-        margin-top: 5px; /* 微调，让图片顶部与文字第一行对齐 */
-    }
-    
-    /* 3. 图片本身的样式 (保持比例，精致美化) */
-    .pub-image img {
-        width: 100%;             /* 撑满父容器 (.pub-image) */
-        height: auto;            /* 高度自适应 */
-        border-radius: 6px;      /* 轻微圆角 */
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* 淡淡的阴影 */
-        transition: transform 0.3s ease;
-    }
-    
-    /* 鼠标悬停微动 */
-    .pub-image img:hover { transform: scale(1.03); }
-    
-    /* 4. 右侧：文字信息区域 (自动占据剩余空间) */
-    .pub-text {
-        flex: 1; /* 占据剩余的所有宽度 */
-    }
-    
-    /* 5. 文字内部样式 (保持左对齐) */
-    .pub-title {
-        font-weight: bold;
-        display: block;
-        color: #222;
-        font-size: 1.1em;
+    #education .edu-item { margin-bottom: 14px; }
+    #education .edu-item:last-child { margin-bottom: 0; }
+    #education p {
+        margin: 0;
         line-height: 1.4;
-        text-align: left; /* 强制左对齐 */
-        margin-bottom: 8px;
-    }
-    
-    .pub-authors {
-        font-size: 0.95em;
         color: #444;
-        display: block;
-        text-align: left; /* 强制左对齐 */
-        margin-bottom: 12px;
-        font-weight: 400;
     }
 
-    /* 强调自己的名字 */
-    .me { 
-        font-weight: 700;  /* ***你自己的名字设为最粗，一眼就能看到*** */
-        text-decoration: underline; 
-        color: #4243d1; 
-    }
-
-    /* 1. 全局普通链接 (如正文中的链接、学校链接等) */
-    a {
-        color: #3366cc;            /* 经典的学术链接蓝，对比度适中 */
-        text-decoration: none;     /* 平时去掉下划线，页面更整洁 */
-        border-bottom: 1px dotted transparent; /* 为下划线留出位置，防止抖动 */
-        transition: all 0.3s ease;
-    }
-    
-    a:hover {
-        color: #0044aa;            /* 鼠标移上去变为更深的蓝色 */
-        text-decoration: none;
-        border-bottom: 1px solid #0044aa; /* 用实线下划线代替默认样式，更精致 */
-    }
-    
-    /* 2. Publications 部分的 Paper/Github 按钮 */
-    .links a { 
-        margin-right: 12px; 
-        font-size: 0.85em; 
-        font-weight: 700;          /* 加粗字体，解决你提到的看不清的问题 */
-        color: #3366cc;            /* 初始文字颜色：深蓝色 */
-        text-transform: uppercase; 
-        border: 1.5px solid #3366cc; /* 加粗边框，与文字颜色一致 */
-        padding: 3px 12px;
-        border-radius: 4px;
-        display: inline-flex;      /* 确保对齐 */
-        align-items: center;
-        transition: all 0.2s ease;
-    }
-    
-    /* 3. 鼠标悬停在 Paper/Github 按钮上的样式 */
-    .links a:hover { 
-        background-color: #3366cc; /* 背景填满蓝色 */
-        color: #ffffff !important; /* 文字变为纯白，!important 确保覆盖全局样式 */
-        border-color: #3366cc; 
-        text-decoration: none;      /* 按钮内不要下划线 */
-        transform: translateY(-1px); /* 悬停时轻微上浮，增加点击感 */
-        box-shadow: 0 2px 5px rgba(51, 102, 204, 0.2); /* 淡淡的蓝色阴影 */
-    }
-
-    footer {
-    text-align: center;
-    font-size: 0.85em;
-    margin-top: 8rem;
-    padding: 3rem 0;
-    color: #888;
-    border-top: 1px solid #eee;
-    }
-
-    /* news的小喇叭样式*/ 
+    /* ========== News ========== */
     .news-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
     .news-list li {
         position: relative;
@@ -223,130 +241,253 @@
     .news-list .date {
         color: #555;
         font-weight: 600;
+        font-style: normal;
         margin-right: 4px;
     }
 
-    
-    /* 联系方式图标样式 */
+    /* ========== Publications ========== */
+    .pub-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 2rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .pub-item:last-of-type { border-bottom: none; }
+
+    .pub-image {
+        flex-shrink: 0;
+        width: 220px;
+        text-align: center;
+        margin-top: 5px;
+    }
+    .pub-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        transition: transform 0.3s ease;
+    }
+    .pub-image img:hover { transform: scale(1.03); }
+
+    .pub-text { flex: 1; }
+    .pub-title {
+        font-weight: bold;
+        display: block;
+        color: #222;
+        font-size: 1.1em;
+        line-height: 1.4;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+    .pub-authors {
+        font-size: 0.95em;
+        color: #444;
+        display: block;
+        text-align: left;
+        margin-bottom: 12px;
+        font-weight: 400;
+    }
+    .doi-text { color: #888; }
+
+    /* 强调名字（只加粗 + 主题色，去掉下划线，避免误认为链接） */
+    .me {
+        font-weight: 700;
+        color: #4243d1;
+    }
+
+    /* ========== 链接 ========== */
+    a {
+        color: #3366cc;
+        text-decoration: none;
+        border-bottom: 1px dotted transparent;
+        transition: all 0.3s ease;
+    }
+    a:hover {
+        color: #0044aa;
+        border-bottom: 1px solid #0044aa;
+    }
+    a:focus-visible {
+        outline: 2px solid #3366cc;
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
+    /* Paper/Github 按钮 */
+    .links a {
+        margin-right: 12px;
+        font-size: 0.85em;
+        font-weight: 700;
+        color: #3366cc;
+        text-transform: uppercase;
+        border: 1.5px solid #3366cc;
+        padding: 3px 12px;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.2s ease;
+    }
+    .links a:hover {
+        background-color: #3366cc;
+        color: #ffffff !important;
+        border-color: #3366cc;
+        text-decoration: none;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px rgba(51, 102, 204, 0.2);
+    }
+
+    /* ========== Footer ========== */
+    footer {
+        text-align: center;
+        font-size: 0.85em;
+        margin-top: 5rem;
+        padding: 2.5rem 0;
+        color: #888;
+        border-top: 1px solid #eee;
+    }
     .footer-contact {
         margin-bottom: 10px;
     }
-    
     .footer-contact a {
         display: inline-block;
         transition: transform 0.2s ease;
+        border-bottom: none;
     }
-    
-    /* 鼠标移到图标上时轻微放大并变色 */
+    .footer-contact a:hover {
+        border-bottom: none;
+    }
     .footer-contact a:hover svg {
-        fill: #3366cc; /* 变为你设定的蓝色 */
+        fill: #3366cc;
         transform: scale(1.2);
     }
-    
-    footer p {
-        margin: 0;
-    }
- 
-    /* --- 移动端响应式适配 (针对手机屏幕) --- */
+    footer p { margin: 0; }
+
+    /* ========== 响应式 ========== */
     @media (max-width: 768px) {
-        /* 1. 整体容器间距微调 */
-        body { 
-            padding: 1.5rem; 
-            padding-top: 40px; 
+        body {
+            padding: 1.5rem;
+            padding-top: 80px;
         }
-    
-        /* 2. 论文条目布局：保持垂直堆叠，但内部强制左对齐 */
+
+        /* 导航栏：汉堡菜单 */
+        .nav-container { padding: 0 1.5rem; }
+        .nav-toggle { display: flex; }
+        .nav-links {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            gap: 0;
+            background: #fff;
+            border-bottom: 1px solid #eaeaea;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .nav-links.open { max-height: 500px; }
+        .nav-links li { border-top: 1px solid #f0f0f0; }
+        .nav-links a {
+            display: block;
+            padding: 12px 1.5rem;
+            border-bottom: none;
+        }
+        .nav-links a.active {
+            background: #f5f8fc;
+            border-bottom: none;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        /* Publications：图片在上、文字在下 */
         .pub-item {
-            flex-direction: column; /* 图片在上，文字在下 */
-            align-items: flex-start; /* 容器内部件靠左 */
-            text-align: left;        /* ***关键：文字强制左对齐*** */
-            gap: 1.5rem;
-            margin-bottom: 4rem;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
         }
-    
-        /* 3. 图片在手机上的宽度缩放 */
         .pub-image {
             width: 100%;
-            max-width: 100%; /* 让图片在手机上可以横向撑满，或者根据需要设为 300px */
-            text-align: left; /* 图片也靠左 */
-        }
-    
-        /* 4. 文字、作者、链接全部左对齐 */
-        .pub-text {
-            width: 100%;
+            max-width: 100%;
             text-align: left;
         }
-    
-        .pub-title, .pub-authors {
-            text-align: left; /* 覆盖之前的 center 设置 */
-        }
-    
-        /* 5. 链接按钮左对齐 */
-        .links {
-            justify-content: flex-start; /* ***关键：按钮不再居中，靠左排列*** */
-        }
-    
-        /* 6. Section 标题对齐 */
+        .pub-text { width: 100%; text-align: left; }
+        .pub-title, .pub-authors { text-align: left; }
+        .links { justify-content: flex-start; }
+
         h2 {
-            font-size: 3rem;
+            font-size: 1.6rem;
             font-weight: 500;
             text-align: left;
         }
     }
-</style>
-
+    </style>
 </head>
 <body>
 
-<header style="border-bottom: 2px solid #f4f4f9; margin-bottom: 2rem; padding-bottom: 2rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
-    
-    <img src="./index_files/zhumao.jpg" alt="Zhu Mao" class="profile-pic" style="margin-bottom: 1.5rem;">
-
-    <div>
-        <h1 style="margin-bottom: 5px; font-weight: bold;">Zhu Mao (毛竹)</h1>
-        <p style="margin-bottom: 10px; line-height: 1.5; color: #555;">
-            Postdoctoral Researcher | Department of Forest Sciences, University of Helsinki
-        </p>
-        
-        <div style="display: flex; justify-content: center; align-items: center; font-size: 1.5rem; margin-bottom: 5px; font-weight: 400;">
-            <span>Email: <a href="mailto:zhu.mao@helsinki.fi">zhu.mao@helsinki.fi</a></span>
-        </div>
-
-        <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 1.5rem; font-weight: 400;">
-            <a href="https://scholar.google.com/citations?user=PF8I1pAAAAAJ" target="_blank" style="display: inline-flex; align-items: center; text-decoration: none;">
-            <i class="fa-graduation-cap fa-solid" style="font-size: 16px; margin-right: 6px; color: #4285F4;"></i> 
-            Google Scholar
-            </a>
-            <span style="color: #ccc;">|</span>
-            <a href="https://orcid.org/0000-0002-8464-2558" target="_blank" style="display: inline-flex; align-items: center; text-decoration: none;">
-                <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" style="width: 16px; height: 16px; margin-right: 4px;">
-                ORCID
-            </a>
-        </div>
+<!-- ========== 导航栏 ========== -->
+<header class="navbar">
+    <div class="nav-container">
+        <a href="#about" class="nav-logo">Zhu Mao</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#presentations">Presentations</a></li>
+            </ul>
+        </nav>
+        <button class="nav-toggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
     </div>
 </header>
 
+<!-- ========== 个人信息 ========== -->
+<header>
+    <img src="./index_files/zhumao.jpg" alt="Zhu Mao" class="profile-pic" width="150" height="150">
+    <h1>Zhu Mao (毛竹)</h1>
+    <p class="affiliation">Postdoctoral Researcher | Department of Forest Sciences, University of Helsinki</p>
+    <p class="contact-line">Email: <a href="mailto:zhu.mao@helsinki.fi">zhu.mao@helsinki.fi</a></p>
+    <div class="social-links">
+        <a href="https://scholar.google.com/citations?user=PF8I1pAAAAAJ" target="_blank" rel="noopener" aria-label="Google Scholar profile">
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+            Google Scholar
+        </a>
+        <span class="divider">|</span>
+        <a href="https://orcid.org/0000-0002-8464-2558" target="_blank" rel="noopener" aria-label="ORCID profile">
+            <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="" class="orcid-icon">
+            ORCID
+        </a>
+    </div>
+</header>
+
+<!-- ========== About ========== -->
 <section id="about">
     <h2>About Me</h2>
-    <p style="line-height: 1.6;">
-    Postdoctoral Researcher in the 
-    <a href="https://www.helsinki.fi/en/researchgroups/forest-technology" target="_blank" style="font-weight: bold;">
-        Forest Technology Group
-    </a>, Department of Forest Sciences, University of Helsinki. <br>
-    My research focuses on forest precision harvesting, deep learning and artificial intelligence in forestry, photogrammetry and remote sensing, 3D modeling.
+    <p>
+        Postdoctoral Researcher in the
+        <a href="https://www.helsinki.fi/en/researchgroups/forest-technology" target="_blank" rel="noopener"><strong>Forest Technology Group</strong></a>,
+        Department of Forest Sciences, University of Helsinki.
+        My research focuses on forest precision harvesting, deep learning and artificial intelligence in forestry, photogrammetry and remote sensing, 3D modeling.
     </p>
-    <p><a href="https://zmaomia.github.io/files/MAO_CV2.pdf" target="_blank" style="font-weight: bold;">View My Full CV</a></p>
+    <p><a href="https://zmaomia.github.io/files/MAO_CV2.pdf" target="_blank" rel="noopener"><strong>View My Full CV</strong></a></p>
 </section>
 
+<!-- ========== News ========== -->
 <section id="news">
     <h2>News</h2>
     <ul class="news-list">
-       <li>
-            <span class="date">May 2026: </span>
+        <li>
+            <span class="date">May 2026:</span>
             <span>
                 Guest Editor for the Special Issue
-                <a href="https://www.mdpi.com/journal/remotesensing/special_issues/63091UD2S9"
-                   target="_blank" rel="noopener">
+                <a href="https://www.mdpi.com/journal/remotesensing/special_issues/63091UD2S9" target="_blank" rel="noopener">
                     <em>Remote Sensing of Individual Trees: Delineation, Characterization, and Applications</em>
                 </a>
                 in <em>Remote Sensing</em> (MDPI). Submission Deadline: 15 Sep. 2026.
@@ -355,6 +496,7 @@
     </ul>
 </section>
 
+<!-- ========== Education ========== -->
 <section id="education">
     <h2>Education</h2>
     <div class="edu-item">
@@ -380,6 +522,7 @@
     </div>
 </section>
 
+<!-- ========== Publications ========== -->
 <section id="publications">
     <h2>Publications</h2>
 
@@ -388,10 +531,10 @@
         <div class="pub-text">
             <span class="pub-title">Estimation of carbon sequestration capacity of urban green infrastructure by fusing multi-source remote sensing data</span>
             <span class="pub-authors">
-                Chang, J., Shao, Z., Wang, J., <span class="me">Mao, Z.</span>, Cheng, T., Xu, X., & Zhuang, Q. (2025) - <em>International Journal of Applied Earth Observation and Geoinformation</em>. 141, 104643. 
+                Chang, J., Shao, Z., Wang, J., <span class="me">Mao, Z.</span>, Cheng, T., Xu, X., &amp; Zhuang, Q. (2025) - <em>International Journal of Applied Earth Observation and Geoinformation</em>. 141, 104643.
                 <span class="doi-text">DOI: 10.1016/j.jag.2025.104643</span>
             </span>
-            <div class="links"><a href="https://doi.org/10.1016/j.jag.2025.104643" target="_blank">Paper</a></div>
+            <div class="links"><a href="https://doi.org/10.1016/j.jag.2025.104643" target="_blank" rel="noopener">Paper</a></div>
         </div>
     </div>
 
@@ -400,12 +543,12 @@
         <div class="pub-text">
             <span class="pub-title">Super-resolution supporting individual tree detection and canopy stratification using half-meter aerial data</span>
             <span class="pub-authors">
-                <span class="me">Mao, Z.</span>, Abdi O., Uusitalo J., Laamanena V., & Kivinen V. (2025) - <em>ISPRS Journal of Photogrammetry and Remote Sensing</em>. 
+                <span class="me">Mao, Z.</span>, Abdi O., Uusitalo J., Laamanena V., &amp; Kivinen V. (2025) - <em>ISPRS Journal of Photogrammetry and Remote Sensing</em>.
                 <span class="doi-text">DOI: 10.1016/j.isprsjprs.2025.04.005</span>
             </span>
             <div class="links">
-                <a href="https://doi.org/10.1016/j.isprsjprs.2025.04.005" target="_blank">Paper</a>
-                <a href="https://github.com/zmaomia/SR-Supporting-ITD" target="_blank">Github</a>
+                <a href="https://doi.org/10.1016/j.isprsjprs.2025.04.005" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/zmaomia/SR-Supporting-ITD" target="_blank" rel="noopener">Github</a>
             </div>
         </div>
     </div>
@@ -415,10 +558,10 @@
         <div class="pub-text">
             <span class="pub-title">Automating the consolidation of GNSS logging tracks and machine pass counting in boreal forests</span>
             <span class="pub-authors">
-                Cao, S., Abdi, O., Koivukoski, K., <span class="me">Mao, Z.</span>, & Uusitalo, J. (2025) - <em>Smart Agricultural Technology</em>.
+                Cao, S., Abdi, O., Koivukoski, K., <span class="me">Mao, Z.</span>, &amp; Uusitalo, J. (2025) - <em>Smart Agricultural Technology</em>.
                 <span class="doi-text">DOI: 10.1016/j.atech.2025.101038</span>
             </span>
-            <div class="links"><a href="https://doi.org/10.1016/j.atech.2025.101038" target="_blank">Paper</a></div>
+            <div class="links"><a href="https://doi.org/10.1016/j.atech.2025.101038" target="_blank" rel="noopener">Paper</a></div>
         </div>
     </div>
 
@@ -427,10 +570,10 @@
         <div class="pub-text">
             <span class="pub-title">Glass façade segmentation and repair for aerial photogrammetric 3D building models with multiple constraints</span>
             <span class="pub-authors">
-                <span class="me">Mao, Z.</span>, Gong, Y., Zhang, F., & Tang, J. (2023) - <em>International Journal of Applied Earth Observation and Geoinformation</em>. 118, 103242. 
+                <span class="me">Mao, Z.</span>, Gong, Y., Zhang, F., &amp; Tang, J. (2023) - <em>International Journal of Applied Earth Observation and Geoinformation</em>. 118, 103242.
                 <span class="doi-text">DOI: 10.1016/j.jag.2023.103242</span>
             </span>
-            <div class="links"><a href="https://doi.org/10.1016/j.jag.2023.103242" target="_blank">Paper</a></div>
+            <div class="links"><a href="https://doi.org/10.1016/j.jag.2023.103242" target="_blank" rel="noopener">Paper</a></div>
         </div>
     </div>
 
@@ -439,12 +582,12 @@
         <div class="pub-text">
             <span class="pub-title">Oblique photogrammetry supporting procedural tree modeling in urban areas</span>
             <span class="pub-authors">
-                Wang, X., Xiang, H., Niu, W., <span class="me">Mao, Z.</span>, Huang, X., & Zhang, F. (2023) - <em>ISPRS Journal of Photogrammetry and Remote Sensing</em>.
+                Wang, X., Xiang, H., Niu, W., <span class="me">Mao, Z.</span>, Huang, X., &amp; Zhang, F. (2023) - <em>ISPRS Journal of Photogrammetry and Remote Sensing</em>.
                 <span class="doi-text">DOI: 10.1016/j.isprsjprs.2023.05.008</span>
             </span>
             <div class="links">
-                <a href="https://doi.org/10.1016/j.isprsjprs.2023.05.008" target="_blank">Paper</a>
-                <a href="https://github.com/lelleMU/Procedrual_Tree_Modeling" target="_blank">Github</a>
+                <a href="https://doi.org/10.1016/j.isprsjprs.2023.05.008" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/lelleMU/Procedrual_Tree_Modeling" target="_blank" rel="noopener">Github</a>
             </div>
         </div>
     </div>
@@ -454,10 +597,10 @@
         <div class="pub-text">
             <span class="pub-title">Improved instance segmentation for slender urban road facility extraction using oblique aerial images</span>
             <span class="pub-authors">
-                <span class="me">Mao, Z.</span>, Huang, X., Niu, W., Wang, X., Hou, Z., & Zhang, F. (2023) - <em>International Journal of Applied Earth Observation and Geoinformation</em>. 
+                <span class="me">Mao, Z.</span>, Huang, X., Niu, W., Wang, X., Hou, Z., &amp; Zhang, F. (2023) - <em>International Journal of Applied Earth Observation and Geoinformation</em>.
                 <span class="doi-text">DOI: 10.1016/j.jag.2023.103362</span>
             </span>
-            <div class="links"><a href="https://doi.org/10.1016/j.jag.2023.103362" target="_blank">Paper</a></div>
+            <div class="links"><a href="https://doi.org/10.1016/j.jag.2023.103362" target="_blank" rel="noopener">Paper</a></div>
         </div>
     </div>
 
@@ -466,12 +609,12 @@
         <div class="pub-text">
             <span class="pub-title">A dataset and ensemble model for glass façade segmentation in oblique aerial images</span>
             <span class="pub-authors">
-                <span class="me">Mao, Z.</span>, Huang, X., Gong, Y., Xiang, H., & Zhang, F. (2022) - <em>IEEE Geoscience and Remote Sensing Letters</em>. 19, 1-5. 
+                <span class="me">Mao, Z.</span>, Huang, X., Gong, Y., Xiang, H., &amp; Zhang, F. (2022) - <em>IEEE Geoscience and Remote Sensing Letters</em>. 19, 1-5.
                 <span class="doi-text">DOI: 10.1109/LGRS.2022.3187760</span>
             </span>
             <div class="links">
-                <a href="https://doi.org/10.1109/LGRS.2022.3187760" target="_blank">Paper</a>
-                <a href="https://github.com/zmaomia/Glass-Facade-Segmentation-Dataset-GFSD" target="_blank">Github</a>
+                <a href="https://doi.org/10.1109/LGRS.2022.3187760" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/zmaomia/Glass-Facade-Segmentation-Dataset-GFSD" target="_blank" rel="noopener">Github</a>
             </div>
         </div>
     </div>
@@ -481,52 +624,85 @@
         <div class="pub-text">
             <span class="pub-title">Deep neural networks for road sign detection and embedded modeling using oblique aerial images</span>
             <span class="pub-authors">
-                <span class="me">Mao, Z.</span>, Zhang, F., Huang, X., Jia, X., Gong, Y., & Zou, Q. (2021) - <em>Remote Sensing</em>. 13(5), 879. 
+                <span class="me">Mao, Z.</span>, Zhang, F., Huang, X., Jia, X., Gong, Y., &amp; Zou, Q. (2021) - <em>Remote Sensing</em>. 13(5), 879.
                 <span class="doi-text">DOI: 10.3390/rs13050879</span>
             </span>
             <div class="links">
-                <a href="https://doi.org/10.3390/rs13050879" target="_blank">Paper</a>
-                <a href="https://github.com/zmaomia/Road-Sign-Detection-and-Embedded-Modeling" target="_blank">Github</a>
+                <a href="https://doi.org/10.3390/rs13050879" target="_blank" rel="noopener">Paper</a>
+                <a href="https://github.com/zmaomia/Road-Sign-Detection-and-Embedded-Modeling" target="_blank" rel="noopener">Github</a>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ========== Projects ========== -->
 <section id="projects">
     <h2>Research Projects</h2>
     <ul>
-        <li><strong>GeoAI explained soil mapping of Finnish</strong> (2025.5-Now). </li>
-        <li><strong>Forest precision harvesting</strong> (2024.1-2025.6).</li>
-        <li><strong>Assembly-based 3D traffic facility detection and modeling</strong> (2022.9-2023.6).</li>
-        <li><strong>Yungang Grottoes restoration</strong> (2022.4-2022.8): Virtual restoration of Buddha statues.</li>
-        <li><strong>Vehicle detection and removal</strong> (2021.1-2021.4): Dynamic vehicale removal from 3D urban models.</li>
+        <li><strong>GeoAI explained soil mapping of Finland</strong> (2025.5 – Now).</li>
+        <li><strong>Forest precision harvesting</strong> (2024.1 – 2025.6).</li>
+        <li><strong>Assembly-based 3D traffic facility detection and modeling</strong> (2022.9 – 2023.6).</li>
+        <li><strong>Yungang Grottoes restoration</strong> (2022.4 – 2022.8): Virtual restoration of Buddha statues.</li>
+        <li><strong>Vehicle detection and removal</strong> (2021.1 – 2021.4): Dynamic vehicle removal from 3D urban models.</li>
     </ul>
 </section>
 
-
-<section id="Conference">
-    <h2>Presentations </h2>
+<!-- ========== Presentations ========== -->
+<section id="presentations">
+    <h2>Presentations</h2>
     <ul>
-    <li><strong>Deep-learning-based Individual tree detection for tomorrow’s precision harvesting operations</strong> (Formec 2025 in Joenssu)</li>
-    <li><strong>Mapping tree-level structural diversity for precision harvesting operations: A comparison of open-source and drone datasets</strong> (Forest Science Day 2025 in Helsinki)</li>
+        <li><strong>Deep-learning-based individual tree detection for tomorrow's precision harvesting operations</strong> — Formec 2025, Joensuu.</li>
+        <li><strong>Mapping tree-level structural diversity for precision harvesting operations: A comparison of open-source and drone datasets</strong> — Forest Science Day 2025, Helsinki.</li>
     </ul>
 </section>
 
-
+<!-- ========== Footer ========== -->
 <footer>
     <div class="footer-contact">
-        <a href="mailto:maozhu.mia@gmail.com" title="Email me">
-            <svg style="width:20px; vertical-align:middle; fill:#888;" viewBox="0 0 24 24">
-                <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V8L12,13L20,8V18M12,11L4,6H20L12,11Z" />
+        <a href="mailto:zhu.mao@helsinki.fi" title="Email me" aria-label="Send email">
+            <svg role="img" aria-label="Email" style="width:20px; vertical-align:middle; fill:#888;" viewBox="0 0 24 24">
+                <path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,18H4V8L12,13L20,8V18M12,11L4,6H20L12,11Z"/>
             </svg>
         </a>
     </div>
-    <p>&copy; <span id="year"></span> Zhu Mao | Last updated: March 2026</p>
+    <p>&copy; <span id="year"></span> Zhu Mao | Last updated: <span id="last-updated">May 2026</span></p>
 </footer>
 
 <script>
-// 自动获取当前年份并填入 id 为 year 的元素中
+// 自动年份
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// 移动端汉堡菜单
+const navToggle = document.querySelector('.nav-toggle');
+const navLinksEl = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinksEl.classList.toggle('open');
+});
+navLinksEl.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+        navToggle.classList.remove('open');
+        navLinksEl.classList.remove('open');
+    });
+});
+
+// 滚动时高亮当前 section
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navAnchors.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+            });
+        }
+    });
+}, {
+    rootMargin: '-40% 0px -55% 0px',
+    threshold: 0
+});
+sections.forEach(s => observer.observe(s));
 </script>
 
 </body>
