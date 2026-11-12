@@ -211,8 +211,23 @@
     }
 
     /* ========== Ongoing Research ========== */
-    .research-item { padding: 0 0 1rem 0; }
-    .research-item p { margin: 0.6rem 0 1rem; color: #444; }
+    .research-item {
+        margin-bottom: 30px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .research-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    
+    .research-item p {
+        margin-top: 10px;
+        margin-bottom: 15px;
+        line-height: 1.7;
+    }
 
     /* ========== Publications ========== */
     .pub-item {
@@ -451,36 +466,39 @@
     <p><a href="https://zmaomia.github.io/files/MAO_CV.pdf" target="_blank" rel="noopener"><strong>View My Full CV</strong></a></p>
 </section>
 
+
 <!-- ========== Ongoing Research ========== -->
 <section id="research">
     <h2>Ongoing Research</h2>
 
+    <!-- Research 1 -->
     <div class="research-item">
         <div class="pub-text">
             <span class="pub-title">
                 MT-GAT-Soil: Multi-task Graph Attention Network
-            for Forest Soil Mapping
+                for Forest Soil Mapping
             </span>
 
             <p>
                 Joint prediction of soil organic layer thickness
-            and soil organic matter using multi-source remote
-            sensing data and spatial graph attention networks.
+                and soil organic matter using multi-source remote
+                sensing data and spatial graph attention networks.
             </p>
 
             <div class="links">
                 <a href="https://zmaomia.github.io/MT-GAT/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                   target="_blank" rel="noopener noreferrer">
                     Project Page
                 </a>
                 <a href="https://doi.org/10.2139/ssrn.7287455"
-               target="_blank" rel="noopener noreferrer">
-                Preprint
-            </a>
+                   target="_blank" rel="noopener noreferrer">
+                    Preprint
+                </a>
             </div>
         </div>
+    </div>
 
+    <!-- Research 2 -->
     <div class="research-item">
         <div class="pub-text">
             <span class="pub-title">
@@ -497,14 +515,14 @@
 
             <div class="links">
                 <a href="https://zmaomia.github.io/ForSD-remote-sensing/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                   target="_blank" rel="noopener noreferrer">
                     Project Page
                 </a>
             </div>
         </div>
     </div>
 </section>
+
 
 <!-- ========== Publications ========== -->
 <section id="publications">
